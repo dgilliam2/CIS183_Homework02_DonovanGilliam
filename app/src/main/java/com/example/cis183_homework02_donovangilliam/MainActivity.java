@@ -1,3 +1,9 @@
+//author: Donovan Gilliam
+//date: 9/23/2024
+//class: CIS 183 Mobile App Development
+//instructor: Zachary Moore
+//desc: Android application allowing manipulation of background color using RGB values controlled
+//via seekbars
 package com.example.cis183_homework02_donovangilliam;
 
 import android.graphics.Color;
@@ -177,6 +183,7 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
+    //applies selected item's info the application
     private void colorListClickListener()
     {
         lv_j_storedcolors.setOnItemClickListener(new AdapterView.OnItemClickListener()

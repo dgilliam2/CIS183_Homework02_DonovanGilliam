@@ -10,9 +10,9 @@ public class ColorInfo
 
     public ColorInfo(int r, int g, int b, String h)
     {
-        this.red = r;
-        this.green = g;
-        this.blue = b;
+        red = r;
+        green = g;
+        blue = b;
         hex_rgb = h;
     }
 
