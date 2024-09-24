@@ -1,6 +1,7 @@
 package com.example.cis183_homework02_donovangilliam;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ public class StoredColorAdapter extends BaseAdapter
 {
     Context context;
     ArrayList<ColorInfo> stored_colors;
+    int color;
 
     public StoredColorAdapter(Context c, ArrayList<ColorInfo> ci)
     {
@@ -49,13 +51,35 @@ public class StoredColorAdapter extends BaseAdapter
         TextView blue = view.findViewById(R.id.tv_v_cc_blue);
         TextView hexrgb = view.findViewById(R.id.tv_v_cc_hexrgb);
 
-        ColorInfo color = stored_colors.get(i);
+        ColorInfo color_info = stored_colors.get(i);
+
+        color = Color.argb(255,
+                                color_info.getRed(),
+                                color_info.getGreen(),
+                                color_info.getBlue());
 
         //Set textboxes to values of specific stored color
-        red.setText(String.valueOf(color.getRed()));
-        green.setText(String.valueOf(color.getGreen()));
-        blue.setText(String.valueOf(color.getBlue()));
-        hexrgb.setText(color.getHex_rgb());
+        red.setText("Red: " + String.valueOf(color_info.getRed()));
+        green.setText("Green: " + String.valueOf(color_info.getGreen()));
+        blue.setText("Blue: " + String.valueOf(color_info.getBlue()));
+        hexrgb.setText("Hex: " + color_info.getHex_rgb());
+
+        //Make sure text is visible on the saved color, similar to in Main Activity
+        if (color_info.getRed() <= 170 && color_info.getGreen() <= 100 && color_info.getBlue() <= 255)
+        {
+            red.setTextColor(Color.WHITE);
+            green.setTextColor(Color.WHITE);
+            blue.setTextColor(Color.WHITE);
+            hexrgb.setTextColor(Color.WHITE);
+        }
+        else
+        {
+            red.setTextColor(Color.BLACK);
+            green.setTextColor(Color.BLACK);
+            blue.setTextColor(Color.BLACK);
+            hexrgb.setTextColor(Color.BLACK);
+        }
+        view.setBackgroundColor(color);
 
         return view;
     }
